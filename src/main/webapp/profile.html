@@ -1,0 +1,338 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #454545;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-left: 20px;
+        }
+
+        .sidebar .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            align-self: center;
+        }
+
+        .sidebar img {
+            width: 40px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            padding: 10px 0;
+            display: block;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #163a58;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+        .dropdown-container {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 10px;
+        }
+
+        .dropdown-container a {
+            padding-left: 20px;
+            font-weight: normal;
+        }
+
+        .sidebar .dropdown-container.active {
+            display: flex;
+        }
+
+        .sidebar .logout {
+            margin-top: auto;
+            margin-bottom: 30px;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .sidebar .logout img {
+            width: 20px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .logout p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .topbar {
+            background-color: #454545;
+            width: calc(100% - 220px);
+            height: 70px;
+            margin-left: 220px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .topbar a.topbar-link {
+            color: white;
+            text-decoration: none;
+            margin-left: 60px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .topbar a.topbar-link .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .topbar a.topbar-link:hover {
+            background-color: #808080;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-left: 100px;
+        }
+
+        .user-info img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+
+        .profile-container {
+            margin-top: 80px;
+            margin-left: 240px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            width: calc(100% - 240px);
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .profile-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .profile-card .info {
+            width: 100%;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .profile-card .info p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+                padding-top: 10px;
+                padding-left: 10px;
+            }
+
+            .sidebar a {
+                text-align: left;
+                padding: 8px 0;
+                font-size: 12px;
+                padding-left: 20px;
+            }
+
+            .sidebar .dropdown-container a {
+                padding-left: 30px;
+            }
+
+            .topbar {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+                padding: 15px 20px;
+            }
+
+            .topbar a.topbar-link {
+                color: white;
+                text-decoration: none;
+                margin-left: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+            }
+
+            .topbar a.topbar-link .icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+            }
+
+            .topbar a.topbar-link:hover {
+                background-color: #808080;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .profile-container {
+                margin-left: 80px;
+                padding: 20px;
+                width: calc(100% - 80px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">Internova</div>
+        <a href="admin-dashboard.html">Dashboard</a>
+        <a href="postInternship.html">Post Internship Opportunities</a>
+        <a href="trackInternprogress.html">Track Intern Progress</a>
+        <a href="evaluations.html">Evaluations</a>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('studentsDropdown')">Manage Students</a>
+        <div id="studentsDropdown" class="dropdown-container">
+            <a href="#">View Students</a>
+            <a href="#">Approve Students</a>
+        </div>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('employersDropdown')">Manage Employers</a>
+        <div id="employersDropdown" class="dropdown-container">
+            <a href="#">View Employers</a>
+            <a href="#">Approve Employers</a>
+        </div>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('reportsDropdown')">Reports</a>
+        <div id="reportsDropdown" class="dropdown-container">
+            <a href="#">Student Reports</a>
+            <a href="#">Employer Reports</a>
+            <a href="#">Task Reports</a>
+        </div>
+        <div class="logout">
+            <img src="https://storage.googleapis.com/a1aa/image/Gnkgecp1Regmn0OQXCKXGqVQvxYeIgCM0LjxCYWprq3IO4wnA.jpg" alt="Logout icon" onclick="window.location.href='login.html';">
+            <p>Logout</p>
+        </div>
+    </div>
+
+    <!-- Topbar -->
+    <div class="topbar">
+        <input type="text" placeholder="Search...">
+        <a href="admin-dashboard.html" class="topbar-link">
+            <img src="https://img.icons8.com/fluent-systems-filled/200/FAB005/home.png" alt="Home icon" class="icon"> Home
+        </a>
+        <a href="notification.html" class="topbar-link">
+            <img src="https://cdn-icons-png.freepik.com/256/3602/3602175.png?semt=ais_hybrid" alt="Notifications icon" class="icon"> Notifications
+        </a>
+        <div class="user-info">
+            <a href="profile.html" class="topbar-link">Admin
+                <img src="https://storage.googleapis.com/a1aa/image/vyo5tuPLBpbuIRZuZqfpB6kKraZUb3CtoiF95fYJy7OFHc4TA.jpg" alt="User Avatar">
+            </a>
+        </div>
+    </div>
+
+    <!-- Profile container -->
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <div class="profile-card">
+            <img src="https://storage.googleapis.com/a1aa/image/vyo5tuPLBpbuIRZuZqfpB6kKraZUb3CtoiF95fYJy7OFHc4TA.jpg" alt="User Avatar">
+            <h3>Admin Name</h3>
+            <p>admin@example.com</p>
+            <div class="info">
+                <p><strong>Role:</strong> Administrator</p>
+                <p><strong>Joined:</strong> January 1, 2020</p>
+                <p><strong>Last Login:</strong> September 15, 2023</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown menu logic
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle('active');
+
+            var toggleIcon = dropdown.previousElementSibling;
+            toggleIcon.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

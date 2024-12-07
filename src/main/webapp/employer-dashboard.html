@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - Placement Interaction Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #6a5acd;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            background-color: #333;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #6a5acd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            padding-top: 80px;
+        }
+
+        .dashboard-welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-welcome h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #6a5acd;
+        }
+
+        .dashboard-welcome p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 30%;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:nth-child(1) {
+            background-color: #ffcccc;
+        }
+
+        .card:nth-child(2) {
+            background-color: #ccffcc;
+        }
+
+        .card:nth-child(3) {
+            background-color: #cce5ff;
+        }
+
+        .card:nth-child(4) {
+            background-color: #ffe5b4;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #6a5acd;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #5a4acb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f4f7fc;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+            .sidebar {
+                width: 100px;
+            }
+            .content {
+                margin-left: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Employer Dashboard</h1>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="post-job.html">Post a Job</a></li>
+            <li><a href="view-applicants.html">View Applicants</a></li>
+            <li><a href="track-jobs.html">Track Jobs</a></li>
+            <li><a href="contact-support.html">Contact Support</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="dashboard-welcome">
+            <h2>Welcome, Employer!</h2>
+            <p>Manage your job postings, view applications, and find top talent!</p>
+        </div>
+
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Post a New Job</h3>
+                <p>Create a new job posting and find the best candidates for your organization.</p>
+                <a href="post-job.html" class="btn">Post a Job</a>
+            </div>
+
+            <div class="card">
+                <h3>View Applications</h3>
+                <p>Review applications from talented students who have applied for your jobs.</p>
+                <a href="view-applicants.html" class="btn">View Applicants</a>
+            </div>
+
+            <div class="card">
+                <h3>Track Job Postings</h3>
+                <p>Monitor the status of your job postings and get real-time updates.</p>
+                <a href="track-jobs.html" class="btn">Track Jobs</a>
+            </div>
+
+            <div class="card">
+                <h3>Contact Support</h3>
+                <p>Need help? Contact our support team for assistance with your queries.</p>
+                <a href="contact-support.html" class="btn">Contact Support</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Placement Interaction Tracker System
+    </footer>
+
+</body>
+</html>

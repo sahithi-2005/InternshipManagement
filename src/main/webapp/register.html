@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Tracker - Register</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/12.jpg'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            flex-direction: column;
+        }
+
+        /* Navbar Styles */
+        /* Navbar Styles */
+nav {
+    background-color: #454545;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px; /* Reduced padding */
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-left: 100px; /* Moves the navigation links slightly to the left */
+}
+
+nav ul li {
+    margin-left: 40px; /* Adjusted space between links */
+    padding-top: 5px; /* Add padding to move the links up */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* Ensures links are bold */
+    /* Adjust font size if needed */
+}
+nav ul li a:hover {
+            background-color: #808080; /* Darker blue for hover effect */
+        }
+        
+
+        .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-left: 30px; /* Adjusted to move the logo right slightly */
+    padding-top: 10px; /* Added padding at the top to move it down */
+}
+        
+
+        /* Container Styles */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 60px; /* Adjusted for smaller navbar */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slide-in 0.8s forwards ease-in-out;
+        }
+
+        h1 {
+            color: #454545;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            text-align: left;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #454545;
+            outline: none;
+        }
+
+        button {
+            background-color: #454545;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #808080;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #454545;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            color: #454545;
+            text-decoration: underline;
+        }
+
+        /* Keyframe for sliding effect */
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            button {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script>
+        // JavaScript function to show alert on successful registration
+        function showAlert() {
+            alert("Registered successfully!");
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">PLACEMENT TRACKER</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Create an Account</h1>
+        <form action="/register" method="post" onsubmit="showAlert(); return false;">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="" required>
+
+            <button type="submit">Register</button>
+            
+            
+        </form>
+        <a href="login.html">Already have an account? Login here</a>
+    </div>
+
+</body>
+</html>

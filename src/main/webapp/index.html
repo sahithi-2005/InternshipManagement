@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Management System!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('images/12.jpg'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: #454545; /* Slate blue for a modern, professional look */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+
+
+        /* Transition message under logo */
+        .welcome-message {
+            font-size: 2.2rem; /* Increased font size */
+            font-weight: bold; /* Bold characters */
+            color: #ffe800;
+            position: absolute;
+            left: 50px; /* Positioning slightly to the left */
+            top: 300%; /* Center it vertically */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            opacity: 0; /* Initially hidden */
+            animation: slideIn 2s forwards 0s; /* Slide in effect */
+            text-align: left; /* Align text to the left */
+        }
+        .typing-effect {
+            font-size: 2rem; /* Font size for typing effect */
+            color: white;
+            font-weight: bold; 
+            position: absolute;
+            left: 50px; /* Positioning slightly to the left */
+            top: 450%; /* Adjust this to position above the welcome message */
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid white; /* Cursor effect */
+        }
+
+        /* Submessage styles */
+        .sub-message {
+            font-size: 1.6rem; /* Smaller font size */
+            color: white; /* White text color */
+            position: absolute;
+            left: 50px; /* Same left position as welcome message */
+            top:650%; /* Position below the welcome message */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            opacity: 0; /* Initially hidden */
+            animation: slideInSub 2s forwards 0s; /* Slide in effect */
+            text-align: left; /* Align text to the left */
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%) translateY(-50%); /* Start from left */
+                opacity: 0; /* Initially hidden */
+            }
+            100% {
+                transform: translateX(0) translateY(-50%); /* End at the original position */
+                opacity: 1; /* Fully visible */
+            }
+        }
+
+        @keyframes slideInSub {
+            0% {
+                transform: translateX(-100%) translateY(-50%); /* Start from left */
+                opacity: 0; /* Initially hidden */
+            }
+            100% {
+                transform: translateX(0) translateY(-50%); /* End at the original position */
+                opacity: 1; /* Fully visible */
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-weight: bold; /* Bold text for navigation buttons */
+        }
+
+        nav ul li a:hover {
+            background-color: #808080; /* Darker blue for hover effect */
+        }
+
+        /* Main content */
+        main {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .intro {
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro img {
+            width: 300px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4b0082; /* Indigo color for heading */
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Scrolling Message */
+        .scrolling-message {
+            color: white; /* Font color set to white */
+            padding: 10px 20px; /* Adjust padding to start slightly from the left */
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            font-size: 1.2rem; /* Slightly larger text */
+            animation: scroll 15s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Footer */
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Internova</div>
+        <div class="typing-effect" id="typing-effect"></div>
+        
+        <div class="welcome-message">
+            Welcome to<br>
+            <br>
+            Internship Management System!
+        </div>
+        <div class="sub-message">
+            Your all-in-one platform to manage Internships.<br>
+            Whether you're a student looking for experience,<br>
+            an employer seeking top talent, or a place where you can track your progress<br>
+            managing recruitment records, we have you covered!
+        </div>
+        <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Main content can go here -->
+    </main>
+
+    <div class="scrolling-message">
+        Stay updated with the latest job opportunities and placement records.
+    </div>
+
+    <footer>
+        <p></p>
+    </footer>
+
+    <script>
+        const phrases = [
+            "Internship Management",
+            "Recruitment Management",
+            "Performance Analytics"
+        ];
+
+        const typingEffect = document.getElementById('typing-effect');
+        let currentPhraseIndex = 0;
+        let currentCharacterIndex = 0;
+        let typingSpeed = 150; // Typing speed in milliseconds
+        let backspacingSpeed = 75; // Backspacing speed in milliseconds
+        let pauseBetween = 2000; // Pause between phrases
+
+        function type() {
+            if (currentCharacterIndex < phrases[currentPhraseIndex].length) {
+                typingEffect.innerHTML += phrases[currentPhraseIndex].charAt(currentCharacterIndex);
+                currentCharacterIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(backspace, pauseBetween);
+            }
+        }
+
+        function backspace() {
+            if (currentCharacterIndex > 0) {
+                typingEffect.innerHTML = phrases[currentPhraseIndex].substring(0, currentCharacterIndex - 1);
+                currentCharacterIndex--;
+                setTimeout(backspace, backspacingSpeed);
+            } else {
+                currentPhraseIndex++;
+                if (currentPhraseIndex >= phrases.length) {
+                    currentPhraseIndex = 0; // Reset to the first phrase
+                }
+                setTimeout(type, typingSpeed + 500); // Add slight delay before typing next phrase
+            }
+        }
+
+        // Start typing effect
+        type();
+    </script>
+
+</body>
+</html>

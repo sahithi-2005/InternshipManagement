@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Officer Dashboard - Placement Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f6f9;
+            color: #333;
+        }
+
+        nav {
+            background-color: #6a5acd;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 250px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #6a5acd;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>PLACEMENT TRACKER</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome, Placement Officer</h1>
+        <div class="dashboard">
+            <div class="card">
+                <a href="#">Manage Job Listings</a>
+            </div>
+            <div class="card">
+                <a href="#">View Student Applications</a>
+            </div>
+            <div class="card">
+                <a href="#">Manage Interviews</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

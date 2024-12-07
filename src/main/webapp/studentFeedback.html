@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-purple-600 text-white p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Student Dashboard</h1>
+        <nav>
+            <a href="student-dashboard.html" class="mr-4">Home</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <div class="flex">
+        <aside class="bg-gray-800 text-white w-64 p-4">
+            <h2 class="text-xl font-bold mb-4">Navigation</h2>
+            <ul>
+                <li class="mb-2"><a href="studentProfile.html" class="hover:underline">Profile</a></li>
+                <li class="mb-2"><a href="view-jobs.html" class="hover:underline">View Job Listings</a></li>
+                <li class="mb-2"><a href="apply-jobs.html" class="hover:underline">Apply for Jobs</a></li>
+                <li class="mb-2"><a href="track-applications.html" class="hover:underline">Track Tasks</a></li>
+                <li class="mb-2"><a href="settings.html" class="hover:underline">Settings</a></li>
+                <li class="mb-2"><a href="studentFeedback.html" class="hover:underline">Feedback</a></li>
+                <li class="mb-2"><a href="prediction-model.html" class="hover:underline">Prediction Model</a></li>
+            </ul>
+        </aside>
+        <main class="flex-1 p-8">
+            <h2 class="text-3xl font-bold text-purple-600 mb-4">Student Feedback</h2>
+            <p class="mb-8">We value your feedback. Please fill out the form below to help us improve our services.</p>
+            <form class="bg-white p-6 rounded-lg shadow-md">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+                    <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-bold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="mb-4">
+                    <label for="feedback" class="block text-gray-700 font-bold mb-2">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" class="w-full p-2 border border-gray-300 rounded"></textarea>
+                </div>
+                <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Submit Feedback</button>
+            </form>
+        </main>
+    </div>
+    <footer class="text-center p-4 mt-8">
+        <p class="text-gray-600">&copy; 2024 Placement Interaction Tracker System</p>
+    </footer>
+</body>
+</html>

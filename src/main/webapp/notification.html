@@ -1,0 +1,320 @@
+<html>
+ <head>
+  <title>
+   Internship Management System - Notifications
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .nav {
+            background-color: #343a40;
+            overflow: hidden;
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .notifications {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .notification-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        .notification-item img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .notification-item .content {
+            flex-grow: 1;
+        }
+        .notification-item .content h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .notification-item .content p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+        .notification-item .time {
+            color: #999;
+            font-size: 14px;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="header">
+   <h1>
+    Internship Management System
+   </h1>
+  </div>
+  <div class="nav">
+   <a href="admin-dashboard.html">
+    Home
+   </a>
+   <a href="#">
+    Internships
+   </a>
+   <a href="#">
+    Notifications
+   </a>
+   <a href="profile.html">
+    Profile
+   </a>
+   <a href="#">
+    Settings
+   </a>
+  </div>
+  <div class="container">
+   <div class="notifications">
+    <div class="notification-item">
+     <img alt="Profile picture of John Doe" height="50" src="https://storage.googleapis.com/a1aa/image/eXa4bJLhFHSqQqyXAEkdJk7VvKxoQNqXg8cUwY694irf5b4TA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Internship Available
+      </h3>
+      <p>
+       John Doe has posted a new internship opportunity.
+      </p>
+     </div>
+     <div class="time">
+      2 hours ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Jane Smith" height="50" src="https://storage.googleapis.com/a1aa/image/wUQXIn2KvfxLbykczfxxebjApfkK9fjNoYb2cMGnuHd6QfGeJA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Application Approved
+      </h3>
+      <p>
+       Your application for the Software Developer internship has been approved.
+      </p>
+     </div>
+     <div class="time">
+      5 hours ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Mark Johnson" height="50" src="https://storage.googleapis.com/a1aa/image/7IZKl72tEf07dyBneW63ljRZlU9XqElZNdEQJbF86hUK6b4TA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Message
+      </h3>
+      <p>
+       Mark Johnson has sent you a new message.
+      </p>
+     </div>
+     <div class="time">
+      1 day ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Emily Davis" height="50" src="https://storage.googleapis.com/a1aa/image/dFtPRwjfKOVrNaFx5c02e3KFzFcArumvxRaPDJXYJznD6b4TA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Internship Completed
+      </h3>
+      <p>
+       Emily Davis has completed the Marketing internship.
+      </p>
+     </div>
+     <div class="time">
+      2 days ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Michael Brown" height="50" src="https://storage.googleapis.com/a1aa/image/hpGjfYfIjvnbqEnV3ineCE56siGcsZ6Db3mrw3uksbzX03wnA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Internship Available
+      </h3>
+      <p>
+       Michael Brown has posted a new internship opportunity.
+      </p>
+     </div>
+     <div class="time">
+      3 days ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Sarah Wilson" height="50" src="https://storage.googleapis.com/a1aa/image/bhjQ1KFk93KjN9FO5Znm3qaUn3iWkG3Etd4auxsNspHheN8JA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Application Rejected
+      </h3>
+      <p>
+       Your application for the Graphic Designer internship has been rejected.
+      </p>
+     </div>
+     <div class="time">
+      4 days ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of David Lee" height="50" src="https://storage.googleapis.com/a1aa/image/7dHbUDKPqsqJGhABeLx7mnOwkgLAweRtHfenHZ3iZyPnnvhPB.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Message
+      </h3>
+      <p>
+       David Lee has sent you a new message.
+      </p>
+     </div>
+     <div class="time">
+      5 days ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Laura Martinez" height="50" src="https://storage.googleapis.com/a1aa/image/vJxOfOyQmbULWK5eRjXD8qG7BG9q9jQf84bS9HfBueSARfGeJA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Internship Completed
+      </h3>
+      <p>
+       Laura Martinez has completed the Data Analyst internship.
+      </p>
+     </div>
+     <div class="time">
+      6 days ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of James Anderson" height="50" src="https://storage.googleapis.com/a1aa/image/QRUBQ2JsFeycDCggn1SjpFnqJd6eBXw8vdlMf3ZAOI49z3wnA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Internship Available
+      </h3>
+      <p>
+       James Anderson has posted a new internship opportunity.
+      </p>
+     </div>
+     <div class="time">
+      1 week ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Patricia Thomas" height="50" src="https://storage.googleapis.com/a1aa/image/ziIisxG03650F9yz7TbtmQfE7atXsLjjV4ggKhw60B198N8JA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Application Approved
+      </h3>
+      <p>
+       Your application for the Content Writer internship has been approved.
+      </p>
+     </div>
+     <div class="time">
+      1 week ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Robert Garcia" height="50" src="https://storage.googleapis.com/a1aa/image/ynnuge8YWIzbbKf0cRrjSdqUAVqhxU2Lxjgpeq2HEqoN03wnA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Message
+      </h3>
+      <p>
+       Robert Garcia has sent you a new message.
+      </p>
+     </div>
+     <div class="time">
+      1 week ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Linda Martinez" height="50" src="https://storage.googleapis.com/a1aa/image/pHeCl8i9D33FVyu6cbG25W4ax3daUUNPHlo0R5mG6mHe5b4TA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Internship Completed
+      </h3>
+      <p>
+       Linda Martinez has completed the HR internship.
+      </p>
+     </div>
+     <div class="time">
+      2 weeks ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Charles Wilson" height="50" src="https://storage.googleapis.com/a1aa/image/t6JKjIivPB4JCppnbRkyMHomGtmBa3FLBwANLOJPl3NgeN8JA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Internship Available
+      </h3>
+      <p>
+       Charles Wilson has posted a new internship opportunity.
+      </p>
+     </div>
+     <div class="time">
+      2 weeks ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Barbara Moore" height="50" src="https://storage.googleapis.com/a1aa/image/Jgihm7rl1c6lOl5Ps4nmcMUWobUHa3ZLnvMHxKqM5ujgeN8JA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       Application Rejected
+      </h3>
+      <p>
+       Your application for the Web Developer internship has been rejected.
+      </p>
+     </div>
+     <div class="time">
+      2 weeks ago
+     </div>
+    </div>
+    <div class="notification-item">
+     <img alt="Profile picture of Paul Taylor" height="50" src="https://storage.googleapis.com/a1aa/image/xlwK2ffqYeLptISz6is3mff2oAGj8g5ltCTA5idJHSbQPfGeJA.jpg" width="50"/>
+     <div class="content">
+      <h3>
+       New Message
+      </h3>
+      <p>
+       Paul Taylor has sent you a new message.
+      </p>
+     </div>
+     <div class="time">
+      3 weeks ago
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

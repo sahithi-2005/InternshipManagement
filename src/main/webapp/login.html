@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement Interaction Tracker - Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('images/12.jpg'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+        }
+
+        nav {
+            background-color: #454545;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items:center;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+       nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 60px;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            width: 800px;
+            max-width: 90%;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            overflow: hidden;
+            min-height: 450px;
+            position: relative;
+        }
+
+        .welcome-section {
+            width: 50%;
+            background-color: #454545;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .form-section {
+            width: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        form {
+            width: 100%;
+            padding: 40px;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+            opacity: 0;
+        }
+
+        form.active {
+            left: 0;
+            opacity: 1;
+        }
+
+        form.hiding {
+            left: -100%;
+            opacity: 0;
+        }
+
+        form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #454545;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #454545;
+        }
+
+        button[type="submit"] {
+            background-color: #454545;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #454545; /* Slightly darker for hover */
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #454545;
+        }
+
+        .toggle-password {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            outline: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .login-box {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .welcome-section,
+            .form-section {
+                width: 100%;
+            }
+
+            .dots {
+                position: static;
+                transform: none;
+            }
+        }
+
+        
+    </style>
+    <script>
+        let currentIndex = 0;
+
+        function switchForm(index) {
+            const forms = document.querySelectorAll('form');
+            const dots = document.querySelectorAll('.dot');
+            const welcomeHeadings = [
+                'Welcome Admin',
+                'Welcome Student',
+                'Welcome Placement Officer',
+                'Welcome Employer'
+            ];
+            const welcomeMessages = [
+                'Manage the platform and oversee all operations.',
+                'Access your dashboard to view opportunities and apply.',
+                'Coordinate placements and manage student interactions.',
+                'Find talented individuals to join your organization.'
+            ];
+
+            const welcomeSection = document.querySelector('.welcome-section');
+            const welcomeTitle = welcomeSection.querySelector('h2');
+            const welcomeMessage = welcomeSection.querySelector('p');
+
+            forms[currentIndex].classList.remove('active');
+            forms[currentIndex].classList.add('hiding');
+
+            setTimeout(function() {
+                forms[currentIndex].classList.remove('hiding');
+                forms[index].classList.add('active');
+                currentIndex = index;
+            }, 500);
+
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+            welcomeTitle.textContent = welcomeHeadings[index];
+            welcomeMessage.textContent = welcomeMessages[index];
+        }
+
+        window.onload = function() {
+            switchForm(0);
+            setToggleIcons(); // Set the initial icon state
+        };
+
+        function setToggleIcons() {
+            const toggleIcons = document.querySelectorAll('.toggle-password img');
+            toggleIcons.forEach(icon => {
+                icon.src = "https://img.icons8.com/material-outlined/24/000000/invisible.png"; // Closed eye icon
+            });
+        }
+
+        function togglePasswordVisibility(inputId, icon) {
+            const passwordField = document.getElementById(inputId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.src = "https://img.icons8.com/material-outlined/24/000000/visible.png"; // Eye open icon
+            } else {
+                passwordField.type = "password";
+                icon.src = "https://img.icons8.com/material-outlined/24/000000/invisible.png"; // Eye closed icon
+            }
+        }
+
+        function handleFormSubmit(event) {
+            const form = event.target;
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                alert('Please fill in all required fields correctly.');
+            } else {
+                alert(`Submitting ${form.id}`);
+                // You can proceed with the form submission
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PLACEMENT TRACKER</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="login-box">
+            <div class="welcome-section">
+                <h2>Welcome Admin</h2>
+                <p>Manage the platform and oversee all operations.</p>
+            </div>
+
+            <div class="form-section">
+                <!-- Admin Login Form -->
+                <form action="admin-dashboard.html" method="post" id="admin-form" onsubmit="handleFormSubmit(event)">
+                    <h2>Admin Login</h2>
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" name="admin-username" required>
+                    <label for="admin-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="admin-password" name="admin-password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('admin-password', this.querySelector('img'))">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" alt="Toggle Password Visibility">
+                        </button>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <!-- Student Login Form -->
+                <form action="student-dashboard.html" method="post" id="student-form" onsubmit="handleFormSubmit(event)">
+                    <h2>Student Login</h2>
+                    <label for="student-username">Username</label>
+                    <input type="text" id="student-username" name="student-username" required>
+                    <label for="student-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="student-password" name="student-password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('student-password', this.querySelector('img'))">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" alt="Toggle Password Visibility">
+                        </button>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <!-- Placement Officer Login Form -->
+                <form action="placement-officer-dashboard.html" method="post" id="placement-officer-form" onsubmit="handleFormSubmit(event)">
+                    <h2>Placement Officer Login</h2>
+                    <label for="placement-officer-username">Username</label>
+                    <input type="text" id="placement-officer-username" name="placement-officer-username" required>
+                    <label for="placement-officer-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="placement-officer-password" name="placement-officer-password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('placement-officer-password', this.querySelector('img'))">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" alt="Toggle Password Visibility">
+                        </button>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <!-- Employer Login Form -->
+                <form action="employer-dashboard.html" method="post" id="employer-form" onsubmit="handleFormSubmit(event)">
+                    <h2>Employer Login</h2>
+                    <label for="employer-username">Username</label>
+                    <input type="text" id="employer-username" name="employer-username" required>
+                    <label for="employer-password">Password</label>
+                    <div style="position: relative;">
+                        <input type="password" id="employer-password" name="employer-password" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('employer-password', this.querySelector('img'))">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/invisible.png" alt="Toggle Password Visibility">
+                        </button>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+
+                <div class="dots">
+                    <div class="dot" onclick="switchForm(0)"></div>
+                    <div class="dot" onclick="switchForm(1)"></div>
+                    <div class="dot" onclick="switchForm(2)"></div>
+                    <div class="dot" onclick="switchForm(3)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>

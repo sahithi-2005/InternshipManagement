@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-purple-600 text-white p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Student Dashboard</h1>
+        <nav>
+            <a href="student-dashboard.html" class="mr-4">Home</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <div class="flex flex-1">
+        <aside class="bg-gray-800 text-white w-64 p-4">
+            <h2 class="text-xl font-bold mb-4">Navigation</h2>
+            <ul>
+                <li class="mb-2"><a href="studentProfile.html" class="hover:underline">Profile</a></li>
+                <li class="mb-2"><a href="view-jobs.html" class="hover:underline">View Job Listings</a></li>
+                <li class="mb-2"><a href="apply" class="hover:underline">Apply for Jobs</a></li>
+                <li class="mb-2"><a href="track-applications.html" class="hover:underline">Track Tasks</a></li>
+                <li class="mb-2"><a href="settings.html" class="hover:underline">Settings</a></li>
+                <li class="mb-2"><a href="studentFeedback.html" class="hover:underline">Feedback</a></li>
+                <li class="mb-2"><a href="prediction-model.html" class="hover:underline">Prediction Model</a></li>
+            </ul>
+        </aside>
+        <main class="flex-1 p-8 overflow-auto">
+            <h2 class="text-3xl font-bold text-purple-600 mb-4">Settings</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Account Settings</h3>
+                <form action="#" method="POST" class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-gray-700">Username:</label>
+                        <input type="text" id="username" name="username" class="w-full p-2 border border-gray-300 rounded" value="john_doe">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700">Email:</label>
+                        <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded" value="john.doe@example.com">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-gray-700">Password:</label>
+                        <input type="password" id="password" name="password" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="confirm-password" class="block text-gray-700">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md mt-8">
+                <h3 class="text-xl font-bold mb-4">Notification Settings</h3>
+                <form action="#" method="POST" class="space-y-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="email-notifications" name="email-notifications" class="mr-2">
+                        <label for="email-notifications" class="text-gray-700">Email Notifications</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="sms-notifications" name="sms-notifications" class="mr-2">
+                        <label for="sms-notifications" class="text-gray-700">SMS Notifications</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Update Notifications</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer class="text-center p-4 mt-8">
+        <p class="text-gray-600">&copy; 2024 Placement Interaction Tracker System</p>
+    </footer>
+</body>
+</html>

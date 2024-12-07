@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Internship Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/12.jpg'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        nav {
+            background-color: #454545;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold; /* Make the navigation links bold */
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Top content */
+        .top-content {
+            padding: 0px;  /* Reduced padding */
+            background-color: #454545;
+            color: #fff;
+            text-align: center;
+        }
+
+        .top-content h1 {
+            margin: 0;
+            font-size: 1.8rem;  /* Reduced font size */
+        }
+
+        /* About content */
+        .about-content {
+            padding: 0px;  /* Reduced padding for positioning */
+            text-align: center;
+            
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: #fff;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Team Carousel Section */
+        .carousel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member {
+            background-color: #ecd4ff;
+            padding: 15px; /* Padding inside the box */
+            margin: 0 15px;
+            text-align: center;
+            border-radius: 0; /* Set border-radius to 0 for sharp edges */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            opacity: 0; /* Start hidden */
+            transform: scale(0.7); /* Slightly smaller */
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .team-member.active {
+            opacity: 1; /* Fully visible */
+            transform: scale(1); /* Full size */
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 350px; /* Increase the height */
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            font-size: 1.3rem;
+            font-weight: bold; /* Keep the name bold */
+            color: #454545;
+            margin-top: 10px; /* Adjust this value to move the name up */
+            margin-bottom: 5px; /* Optional: Adjust bottom margin for spacing */
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            font-weight: bold; /* Make the role bold */
+            color: #555;
+        }
+
+        /* Animation Styles */
+        .team-member.show {
+            opacity: 1; /* Fully visible */
+            transform: scale(1); /* Full size */
+        }
+
+        .team-member.hide {
+            opacity: 0; /* Fully transparent */
+            transform: scale(0.7); /* Slightly smaller */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Internship Management System</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Top content -->
+    <section class="top-content">
+        <h1>Meet Our Team</h1>
+    </section>
+
+    <!-- About content -->
+    <div class="about-content">
+        <h2>About Us</h2>
+        <p>We connect students with career opportunities and employers with top talent, making Internship management easy and efficient.</p>
+    </div>
+
+    <!-- Team Carousel Section -->
+    <div class="carousel-container">
+        <div class="team-carousel">
+            <div class="team-member show">
+                <img src="images/img2.jpg" alt="Hamsa vahini">
+                <h3>Recruiter</h3>
+                <p>Recruits the People</p>
+            </div>
+            <div class="team-member hide">
+                <img src="images/img3.jpg" alt="Harshitha">
+                <h3>Admin</h3>
+                <p>Handles application</p>
+            </div>
+            <div class="team-member hide">
+                <img src="images/img4.jpg" alt="Niharika">
+                <h3>Students</h3>
+                <p>Interns</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const teamMembers = document.querySelectorAll('.team-member');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            teamMembers.forEach((member, index) => {
+                if (index === currentIndex) {
+                    member.classList.add('show');
+                    member.classList.remove('hide');
+                } else {
+                    member.classList.add('hide');
+                    member.classList.remove('show');
+                }
+            });
+        }
+
+        // Autoplay (optional)
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % teamMembers.length;
+            updateCarousel();
+        }, 3000);  // Change every 3 seconds
+
+        updateCarousel();
+    </script>
+
+</body>
+</html>

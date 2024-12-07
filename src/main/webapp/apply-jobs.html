@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-purple-600 text-white p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Student Dashboard</h1>
+        <nav>
+            <a href="student-dashboard.html" class="mr-4">Home</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <div class="flex flex-1">
+        <aside class="bg-gray-800 text-white w-64 p-4">
+            <h2 class="text-xl font-bold mb-4">Navigation</h2>
+            <ul>
+                <li class="mb-2"><a href="studentProfile.html" class="hover:underline">Profile</a></li>
+                <li class="mb-2"><a href="view-jobs.html" class="hover:underline">View Job Listings</a></li>
+                <li class="mb-2"><a href="apply-jobs.html" class="hover:underline">Apply for Jobs</a></li>
+                <li class="mb-2"><a href="track-applications.html" class="hover:underline">Track Tasks</a></li>
+                <li class="mb-2"><a href="settings.html" class="hover:underline">Settings</a></li>
+                <li class="mb-2"><a href="studentFeedback.html" class="hover:underline">Feedback</a></li>
+                <li class="mb-2"><a href="prediction-model.html" class="hover:underline">Prediction Model</a></li>
+            </ul>
+        </aside>
+        <main class="flex-1 p-8 overflow-auto">
+            <h2 class="text-3xl font-bold text-purple-600 mb-4">Apply for Jobs</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Job Application Form</h3>
+                <form action="#" method="POST" class="space-y-4">
+                    <div>
+                        <label for="job-title" class="block text-gray-700">Job Title:</label>
+                        <input type="text" id="job-title" name="job-title" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="company" class="block text-gray-700">Company:</label>
+                        <input type="text" id="company" name="company" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="location" class="block text-gray-700">Location:</label>
+                        <input type="text" id="location" name="location" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="salary" class="block text-gray-700">Expected Salary:</label>
+                        <input type="text" id="salary" name="salary" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="resume" class="block text-gray-700">Upload Resume:</label>
+                        <input type="file" id="resume" name="resume" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div>
+                        <label for="cover-letter" class="block text-gray-700">Cover Letter:</label>
+                        <textarea id="cover-letter" name="cover-letter" rows="4" class="w-full p-2 border border-gray-300 rounded"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer class="text-center p-4 mt-8">
+        <p class="text-gray-600">&copy; 2024 Placement Interaction Tracker System</p>
+    </footer>
+</body>
+</html>

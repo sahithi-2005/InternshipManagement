@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Model - Placement Interaction Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6a5acd;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 30%;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .sliders {
+            margin: 20px 0;
+        }
+
+        .sliders label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .sliders input[type="range"] {
+            width: 100%;
+        }
+
+        canvas {
+            margin: 20px auto;
+        }
+
+        .results {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #6a5acd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Predictive Modeling</h2>
+
+    <div class="dashboard">
+        <!-- Cards for static metrics -->
+        <div class="card">
+            <h3>Number of Hackathons</h3>
+            <p id="hackathons">0</p>
+        </div>
+        <div class="card">
+            <h3>Certifications</h3>
+            <p id="certifications">0</p>
+        </div>
+        <div class="card">
+            <h3>Backlogs</h3>
+            <p id="backlogs">0</p>
+        </div>
+    </div>
+
+    <div>
+        <!-- Slider for CGPA -->
+        <div class="sliders">
+            <label for="cgpa">CGPA: <span id="cgpaValue">0</span></label>
+            <input type="range" id="cgpa" min="0" max="10" step="0.1" value="7">
+        </div>
+
+        <!-- Programming scores and communication skills as pie charts -->
+        <canvas id="skillsChart" width="400" height="200"></canvas>
+        <canvas id="verbalChart" width="400" height="200"></canvas>
+    </div>
+
+    <div>
+        <!-- Line graph for Logical and Quantitative reasoning scores -->
+        <canvas id="scoresChart" width="400" height="200"></canvas>
+    </div>
+
+    <div class="results">
+        <button class="btn" onclick="predictResults()">Predict Results</button>
+        <h3 id="predictionResult"></h3>
+    </div>
+
+    <script>
+        // Update CGPA display
+        const cgpaSlider = document.getElementById('cgpa');
+        const cgpaValue = document.getElementById('cgpaValue');
+        cgpaSlider.addEventListener('input', function() {
+            cgpaValue.textContent = cgpaSlider.value;
+        });
+
+        // Data for static values
+        document.getElementById('hackathons').textContent = 5;
+        document.getElementById('certifications').textContent = 3;
+        document.getElementById('backlogs').textContent = 0;
+
+        // Pie chart for Programming and Communication skills
+        const skillsChart = new Chart(document.getElementById('skillsChart'), {
+            type: 'pie',
+            data: {
+                labels: ['C++', 'Java', 'Python', 'JavaScript'],
+                datasets: [{
+                    label: 'Programming Skills',
+                    data: [80, 70, 90, 60],
+                    backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+                }]
+            }
+        });
+
+        const verbalChart = new Chart(document.getElementById('verbalChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Communication', 'Writing', 'Reading'],
+                datasets: [{
+                    label: 'Verbal Skills',
+                    data: [75, 65, 85],
+                    backgroundColor: ['#ffcc99', '#99ff99', '#66b3ff']
+                }]
+            }
+        });
+
+        // Line chart for Logical and Quantitative reasoning scores
+        const scoresChart = new Chart(document.getElementById('scoresChart'), {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023'],
+                datasets: [
+                    {
+                        label: 'Logical Reasoning',
+                        data: [60, 70, 75, 80],
+                        borderColor: '#66b3ff',
+                        fill: false
+                    },
+                    {
+                        label: 'Quantitative Scores',
+                        data: [65, 75, 85, 90],
+                        borderColor: '#ffcc99',
+                        fill: false
+                    }
+                ]
+            }
+        });
+
+        function predictResults() {
+            const cgpa = cgpaSlider.value;
+            let result = 'Based on your CGPA (' + cgpa + '), skills, and performance in reasoning tests, you are eligible to apply for 10 jobs.';
+            document.getElementById('predictionResult').textContent = result;
+        }
+    </script>
+
+</body>
+</html>

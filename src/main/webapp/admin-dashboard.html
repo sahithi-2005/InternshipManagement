@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 220px;
+            background-color: #454545;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the start (left) */
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0; /* Start from the top */
+            padding-left: 20px; /* Add padding to the left */
+        }
+
+        .sidebar .logo {
+            color: white; /* White color for the logo */
+            font-weight: bold; /* Bold text for the logo */
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            align-self: center; /* Center the logo */
+        }
+
+        .sidebar img {
+            width: 40px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            padding: 10px 0; /* Vertical padding only */
+            display: block;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s ease;
+            font-weight: bold; /* Make navigation links bold */
+        }
+
+        .sidebar a:hover {
+            background-color: #163a58;
+            border-radius: 5px;
+            padding-left: 10px; /* Slightly increase left padding on hover */
+        }
+
+        /* Dropdown container for submenus */
+        .dropdown-container {
+            display: none; /* Keep dropdowns hidden initially */
+            flex-direction: column;
+            width: 100%;
+            padding-left: 10px; /* Indent submenu items */
+        }
+
+        .dropdown-container a {
+            padding-left: 20px; /* Additional indentation for submenu items */
+            font-weight: normal; /* Optional: make submenu links normal weight */
+        }
+
+        /* Styles for managing dropdown visibility */
+        .sidebar .dropdown-container.active {
+            display: flex;
+        }
+
+        .sidebar .logout {
+            margin-top: auto;
+            margin-bottom: 30px;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .sidebar .logout img {
+            width: 20px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .logout p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Topbar */
+        .topbar {
+            background-color: #454545;
+            width: calc(100% - 220px);
+            height: 70px;
+            margin-left: 220px;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .topbar a.topbar-link {
+            color: white; /* Text color */
+            text-decoration: none; /* Remove underline */
+            margin-left: 60px; /* Space between links */
+            padding: 10px; /* Padding for clickable area */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Transition for hover effect */
+            display: flex; /* Align items */
+            align-items: center; /* Center items vertically */
+            font-weight: bold; /* Make topbar links bold */
+        }
+
+        .topbar a.topbar-link .icon {
+            width: 20px; /* Adjust icon size */
+            height: 20px; /* Adjust icon size */
+            margin-right: 8px; /* Space between icon and text */
+        }
+
+        .topbar a.topbar-link:hover {
+            background-color: #808080; /* Background color on hover */
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-left: 100px; /* Adjusts entire user-info container */
+        }
+
+        .user-info img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right: 50px; /* Space between the image and the text */
+            margin-left: 50px; /* Optional adjustment */
+        }
+
+        /* Dashboard container */
+        .dashboard-container {
+            margin-top: 80px;
+            margin-left: 240px;
+            padding: 20px 40px; /* Added padding to avoid touching the borders */
+            box-sizing: border-box;
+            width: calc(100% - 240px);
+        }
+
+        .dashboard-container h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Dashboard cards */
+        .dashboard-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Placement Data Section */
+        .placement-data {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            position: relative;
+            min-height: 120px;
+            margin: 10px; /* Add margin to give space between the card and the container */
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card span {
+            font-size: 2rem;
+            color: #454545;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+
+        /* Placement Analysis Section */
+        .placement-analysis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Data visualization cards */
+        .chart-card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px; /* Increased height for charts */
+            margin: 10px; /* Add margin to avoid touching borders */
+        }
+
+        .chart-card h3 {
+            color: #454545; /* Text color back to #1e4e79 */
+        }
+
+        /* Line between sections */
+        .divider {
+            height: 2px;
+            background-color: #ccc;
+            margin: 40px 0;
+        }
+
+        /* Dropdown icon */
+        .dropdown-toggle:after {
+            content: '⮟';
+            float: right;
+            margin-right: 10px;
+        }
+
+        .sidebar a.dropdown-toggle.active:after {
+            content: '⮟';
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+                padding-top: 10px;
+                padding-left: 10px; /* Adjust padding for smaller screens */
+            }
+
+            .sidebar a {
+                text-align: left;
+                padding: 8px 0;
+                font-size: 12px;
+                padding-left: 20px; /* Add padding to shift text right */
+            }
+
+            .sidebar .dropdown-container a {
+                padding-left: 30px; /* Further indentation for submenus */
+            }
+
+            .topbar {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+                padding: 15px 20px; /* Adjust padding for smaller screens */
+            }
+
+            .topbar a.topbar-link {
+                color: white; /* Text color */
+                text-decoration: none; /* Remove underline */
+                margin-left: 20px; /* Space between links */
+                padding: 10px; /* Padding for clickable area */
+                border-radius: 5px; /* Rounded corners */
+                transition: background-color 0.3s ease; /* Transition for hover effect */
+                display: flex; /* Align items */
+                align-items: center; /* Center items vertically */
+                font-weight: bold; /* Bold text */
+            }
+
+            .topbar a.topbar-link .icon {
+                width: 20px; /* Adjust icon size */
+                height: 20px; /* Adjust icon size */
+                margin-right: 8px; /* Space between icon and text */
+            }
+
+            .topbar a.topbar-link:hover {
+                background-color: #808080; /* Background color on hover */
+            }
+
+            .user-info {
+                display: none; /* Hide user info on smaller screens */
+            }
+
+            .dashboard-container {
+                margin-left: 80px;
+                padding: 20px;
+                width: calc(100% - 80px);
+            }
+
+            .placement-data,
+            .placement-analysis {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .placement-analysis {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">Internova</div>
+        <a href="#">Dashboard</a>
+        <a href="postInternship.html">Post Internship Opportunities</a>
+        <a href="trackInternprogress.html">Track Intern Progress</a>
+        <a href="evaluations.html">Evaluations</a>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('studentsDropdown')">Manage Students</a>
+        <div id="studentsDropdown" class="dropdown-container">
+            <a href="#">View Students</a>
+            <a href="#">Approve Students</a>
+        </div>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('employersDropdown')">Manage Employers</a>
+        <div id="employersDropdown" class="dropdown-container">
+            <a href="#">View Employers</a>
+            <a href="#">Approve Employers</a>
+        </div>
+        <a href="#" class="dropdown-toggle" onclick="toggleDropdown('reportsDropdown')">Reports</a>
+        <div id="reportsDropdown" class="dropdown-container">
+            <a href="#">Student Reports</a>
+            <a href="#">Employer Reports</a>
+            <a href="#">Task Reports</a>
+        </div>
+        <div class="logout">
+            <img src="images/logout.jpg" alt="Logout" onclick="window.location.href='login.html';">
+            <p>Logout</p>
+        </div>
+    </div>
+
+    <!-- Topbar -->
+    <div class="topbar">
+        <input type="text" placeholder="Search...">
+        <a href="admin-dashboard.html" class="topbar-link">
+            <img src="https://img.icons8.com/fluent-systems-filled/200/FAB005/home.png" alt="home" class="icon"> Home
+        </a>
+        <a href="notification.html" class="topbar-link">
+            <img src="https://cdn-icons-png.freepik.com/256/3602/3602175.png?semt=ais_hybrid" alt="Notifications" class="icon"> Notifications </a>
+         <div class="user-info">
+         <a href="profile.html"  class="topbar-link">Admin<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNZZEL4GCj-EDfPiop1Hwra1kr3PFc4QmUXQ&s" alt="User Avatar">
+            </a>
+        </div>
+    </div>
+
+    <!-- Dashboard container -->
+    <div class="dashboard-container">
+        <h2>Dashboard</h2>
+
+        <!-- Placement Data Section -->
+        <div class="placement-data">
+            <div class="card" data-count="1200">
+                <h3>Total Students</h3>
+                <span>0</span>
+            </div>
+            <div class="card" data-count="150">
+                <h3>Total Employers</h3>
+                <span>0</span>
+            </div>
+            <div class="card" data-count="35">
+                <h3>Active Job Posts</h3>
+                <span>0</span>
+            </div>
+            <div class="card" data-count="200">
+                <h3>Pending Applications</h3>
+                <span>0</span>
+            </div>
+            <div class="card" data-count="450">
+                <h3>Students Placed</h3>
+                <span>0</span>
+            </div>
+        </div>
+
+        <!-- Divider Line -->
+        <div class="divider"></div>
+
+        <!-- Placement Analysis Section -->
+        <div class="placement-analysis">
+            <div class="chart-card">
+                <h3>Application Statistics</h3>
+                <canvas id="applicationStatisticsChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Placement Rate</h3>
+                <canvas id="placementRateChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Company Engagement</h3>
+                <canvas id="companyEngagementChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+   <!-- Adding Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Code to animate the dashboard counts
+        document.addEventListener('DOMContentLoaded', function () {
+            const counters = document.querySelectorAll('.card span');
+            counters.forEach((counter) => {
+                const updateCount = () => {
+                    const target = +counter.parentElement.getAttribute('data-count');
+                    const current = +counter.innerText;
+                    const increment = target / 100;
+
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current + increment);
+                        setTimeout(updateCount, 50);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        });
+
+        // Charts using Chart.js
+        const applicationStatisticsCtx = document.getElementById('applicationStatisticsChart').getContext('2d');
+        const placementRateCtx = document.getElementById('placementRateChart').getContext('2d');
+        const companyEngagementCtx = document.getElementById('companyEngagementChart').getContext('2d');
+
+        new Chart(applicationStatisticsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Applications',
+                    data: [50, 60, 70, 80, 100, 90, 120],
+                    backgroundColor: '#ffe800'
+                }]
+            }
+        });
+
+        new Chart(placementRateCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Placed', 'Not Placed', 'Under Review'],
+                datasets: [{
+                    data: [300, 150, 100], // Adjust the data values as needed
+                    backgroundColor: ['#454545', '#ccc', '#ffcc00']
+                }]
+            }
+        });
+
+
+        new Chart(companyEngagementCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Company Engagement',
+                    data: [20, 30, 40, 60, 50, 70, 90],
+                    borderColor: '#ffe800',
+                    fill: false
+                }]
+            }
+        });
+
+        // Dropdown menu logic
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle('active');
+
+            var toggleIcon = dropdown.previousElementSibling;
+            toggleIcon.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

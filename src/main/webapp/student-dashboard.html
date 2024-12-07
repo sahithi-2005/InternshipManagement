@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Internship Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #6a5acd;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar {
+            background-color: #333;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #6a5acd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            padding-top: 80px;
+        }
+
+        .dashboard-welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-welcome h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #6a5acd;
+        }
+
+        .dashboard-welcome p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 30%;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:nth-child(1) {
+            background-color: #ffcccc;
+        }
+
+        .card:nth-child(2) {
+            background-color: #ccffcc;
+        }
+
+        .card:nth-child(3) {
+            background-color: #cce5ff;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #6a5acd;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #5a4acb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f4f7fc;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+            .sidebar {
+                width: 100px;
+            }
+            .content {
+                margin-left: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Student Dashboard</h1>
+        <div>
+            <a href="student-dashboard.html">Home</a>
+            <a href="login.html">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="studentProfile.html">Profile</a></li>
+            <li><a href="view-jobs.html">View Job Listings</a></li>
+            <li><a href="apply-jobs.html">Apply for Jobs</a></li>
+            <li><a href="track-applications.html">Track Tasks</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="studentFeedback.html">Feedback</a></li>
+            <li><a href="prediction-model.html">Prediction Model</a></li> <!-- New Prediction Model link -->
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="dashboard-welcome">
+            <h2>Welcome, Student!</h2>
+            <p>Login using the default username and password to access your profile and explore upcoming placements.</p>
+        </div>
+
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>View Job Listings</h3>
+                <p>Browse through available job listings to find the perfect opportunity.</p>
+                <a href="view-jobs.html" class="btn">View Listings</a>
+            </div>
+
+            <div class="card">
+                <h3>Apply for Jobs</h3>
+                <p>Apply for jobs you are interested in.</p>
+                <a href="apply-jobs.html" class="btn">Apply for jobs.</a>
+            </div>
+
+            <div class="card">
+                <h3>Track Tasks</h3>
+                <p>Keep track of your submitted Tasks and their statuses.</p>
+                <a href="track-applications.html" class="btn">Track Tasks</a>
+            </div>
+
+            <div class="card">
+                <h3>Prediction Model</h3>
+                <p>Assess your skills and CGPA to find out how many jobs you can apply for.</p>
+                <a href="prediction-model.html" class="btn">Check Eligibility</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Placement Interaction Tracker System
+    </footer>
+
+</body>
+</html>

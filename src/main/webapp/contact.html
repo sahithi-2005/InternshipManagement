@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Placement Interaction Tracker System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/12.jpg'); /* Path to your background image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        nav {
+            background-color: #454545;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+        }
+
+        nav .logo {
+            color: white; /* Change logo color to white */
+            font-weight: bold; /* Make logo text bold */
+            font-size: 1.5rem; /* Increase font size if needed */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white; /* Set link color to white */
+            text-decoration: none;
+            font-weight: bold; /* Make link text bold */
+        }
+
+        .contact-content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: #fff;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .contact-content .contact-info {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .contact-form {
+            max-width: 400px; /* Keep this for the overall form width */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Start hidden */
+            transform: translateY(20px); /* Start slightly below */
+            animation: slideUp 0.5s forwards; /* Apply animation */
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1; /* Fully visible */
+                transform: translateY(0); /* Move to original position */
+            }
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 90%; /* Set a smaller width for the input and textarea */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Disable resizing for the textarea */
+        .contact-form textarea {
+            resize: none; /* Disable resizing */
+        }
+
+        .contact-form button {
+            background-color: #454545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #370061;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PLACEMENT TRACKER</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-content">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need further assistance, feel free to reach out to us:</p>
+
+        <div class="contact-form">
+            <form id="contactForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get the form element
+        const contactForm = document.getElementById('contactForm');
+
+        // Add an event listener for form submission
+        contactForm.addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Display a success message
+            alert('Your message has been successfully sent!');
+
+            // Optionally, reset the form
+            contactForm.reset();
+        });
+    </script>
+
+</body>
+</html>

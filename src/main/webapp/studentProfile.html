@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-purple-600 text-white p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Student Dashboard</h1>
+        <nav>
+            <a href="student-dashboard.html" class="mr-4">Home</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <div class="flex">
+        <aside class="bg-gray-800 text-white w-64 p-4">
+            <h2 class="text-xl font-bold mb-4">Navigation</h2>
+            <ul>
+                <li class="mb-2"><a href="studentProfile.html" class="hover:underline">Profile</a></li>
+                <li class="mb-2"><a href="view-jobs.html" class="hover:underline">View Job Listings</a></li>
+                <li class="mb-2"><a href="apply-jobs.html" class="hover:underline">Apply for Jobs</a></li>
+                <li class="mb-2"><a href="track-applications.html" class="hover:underline">Track Tasks</a></li>
+                <li class="mb-2"><a href="settings.html" class="hover:underline">Settings</a></li>
+                <li class="mb-2"><a href="studentFeedback.html" class="hover:underline">Feedback</a></li>
+                <li class="mb-2"><a href="prediction-model.html" class="hover:underline">Prediction Model</a></li>
+            </ul>
+        </aside>
+        <main class="flex-1 p-8">
+            <h2 class="text-3xl font-bold text-purple-600 mb-4">Student Profile</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4">Personal Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700">Name:</label>
+                        <p class="bg-gray-100 p-2 rounded">John Doe</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Email:</label>
+                        <p class="bg-gray-100 p-2 rounded">john.doe@example.com</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Phone:</label>
+                        <p class="bg-gray-100 p-2 rounded">123-456-7890</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Address:</label>
+                        <p class="bg-gray-100 p-2 rounded">123 Main St, Anytown, USA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md mt-8">
+                <h3 class="text-xl font-bold mb-4">Academic Information</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700">University:</label>
+                        <p class="bg-gray-100 p-2 rounded">XYZ University</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Course:</label>
+                        <p class="bg-gray-100 p-2 rounded">Computer Science</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">CGPA:</label>
+                        <p class="bg-gray-100 p-2 rounded">3.8</p>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Graduation Year:</label>
+                        <p class="bg-gray-100 p-2 rounded">2024</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="text-center p-4 mt-8">
+        <p class="text-gray-600">&copy; 2024 Placement Interaction Tracker System</p>
+    </footer>
+</body>
+</html>
